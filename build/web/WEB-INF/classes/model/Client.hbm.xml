@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 mars 2015 12:14:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Client" table="client" catalog="gestionstock">
+        <id name="idClient" type="int">
+            <column name="idClient" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="nom" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="adresse" type="string">
+            <column name="adresse" length="45" />
+        </property>
+        <property name="codePostal" type="string">
+            <column name="code_postal" length="45" />
+        </property>
+        <property name="ville" type="string">
+            <column name="ville" length="45" />
+        </property>
+          <property name="type" type="int">
+            <column name="type" />
+        </property>
+<!--        <set name="commandes" table="commande" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Client_idClient" not-null="true" />
+            </key>
+            <one-to-many class="model.Commande" />
+        </set>-->
+    </class>
+</hibernate-mapping>

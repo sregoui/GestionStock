@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 mars 2015 12:14:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Produit" table="produit" catalog="gestionstock">
+        <id name="idProduit" type="int">
+            <column name="idProduit" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="fournisseur" class="model.Fournisseur" fetch="select">
+            <column name="Fournisseur_idFournisseur" not-null="true" />
+        </many-to-one>
+        <many-to-one name="categorieProduit" class="model.CategorieProduit" fetch="select">
+            <column name="Categorie_Produit_idCategorie_Produit" not-null="true" />
+        </many-to-one>
+        <property name="libelle" type="string">
+            <column name="libelle" length="45" />
+        </property>
+        <property name="prixAchat" type="string">
+            <column name="prix_achat" length="45" />
+        </property>
+        <property name="prixVente" type="string">
+            <column name="prix_vente" length="45" />
+        </property>
+        <property name="refProduit" type="string">
+            <column name="ref_produit" length="45" />
+        </property>
+        <property name="stockMin" type="int">
+            <column name="stockMin" />
+        </property>
+        <property name="stockMax" type="int">
+            <column name="stockMax" />
+        </property>
+        <property name="stock" type="int">
+            <column name="stock"/>
+        </property>
+    </class>
+</hibernate-mapping>

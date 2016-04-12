@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 mars 2015 12:14:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Personnel" table="personnel" catalog="gestionstock">
+        <id name="idPersonnel" type="int">
+            <column name="idPersonnel" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="nom" length="45" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="prenom" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" not-null="true" />
+        </property>
+        <property name="matricule" type="string">
+            <column name="matricule" length="45" />
+        </property>
+        <property name="service" type="string">
+            <column name="service" length="45" />
+        </property>
+        <set name="commandes" table="commande" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Personnel_idPersonnel" not-null="true" />
+            </key>
+            <one-to-many class="model.Commande" />
+        </set>
+    </class>
+</hibernate-mapping>

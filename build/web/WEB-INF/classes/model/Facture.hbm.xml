@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 mars 2015 12:14:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Facture" table="facture" catalog="gestionstock">
+        <id name="idFacture" type="java.lang.Integer">
+            <column name="idFacture" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="commande" class="model.Commande" fetch="select">
+            <column name="idCommande" not-null="true" />
+        </many-to-one>
+        <property name="designation" type="string">
+            <column name="designation" not-null="true" />
+        </property>
+        <property name="montant" type="double">
+            <column name="montant" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

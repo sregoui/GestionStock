@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 mars 2015 12:14:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Commande" table="commande" catalog="gestionstock">
+        <id name="idCommande" type="int">
+            <column name="idCommande" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="fournisseur" class="model.Fournisseur" fetch="select">
+            <column name="Fournisseur_idFournisseur" not-null="true" />
+        </many-to-one>
+        <many-to-one name="personnel" class="model.Personnel" fetch="select">
+            <column name="Personnel_idPersonnel" not-null="true" />
+        </many-to-one>
+        <many-to-one name="client" class="model.Client" fetch="select">
+            <column name="Client_idClient" not-null="true" />
+        </many-to-one>
+        <property name="designation" type="string">
+            <column name="designation" length="45" />
+        </property>
+        <property name="typeCommande" type="java.lang.Boolean">
+            <column name="type_commande" />
+        </property>
+        <property name="paiement" type="java.lang.Boolean">
+            <column name="paiement" />
+        </property>
+        <property name="dateCommande" type="date">
+            <column name="date_commande" length="10" />
+        </property>
+        <property name="tauxTva" type="string">
+            <column name="taux_tva" length="45" />
+        </property>
+        <set name="factures" table="facture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCommande" not-null="true" />
+            </key>
+            <one-to-many class="model.Facture" />
+        </set>
+        <set name="produits" table="produits" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Commande_idCommande" not-null="true" />
+            </key>
+            <one-to-many class="model.Commande" />
+        </set>
+    </class>
+</hibernate-mapping>
